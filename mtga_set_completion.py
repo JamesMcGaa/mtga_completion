@@ -167,3 +167,21 @@ class mtg_set:
 
                     # might have gone over vault threshhold, so check again
                     self.vault_and_wildcard_checks()
+        
+    
+    def is_rare_completed(self):
+        for rarity_index in range(3):
+            if self.count_missing_at_rarity(rarity_index) != 0:
+                return False
+        return True
+
+    def complete_rare_set(self):
+        while not self.is_rare_completed():
+            if self.gems >= 200:
+                self.gems -= 200
+            else:
+                self.packs_purchased += 1
+            self.add_pack()
+
+        return self.packs_purchased
+
