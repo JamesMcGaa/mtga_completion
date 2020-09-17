@@ -54,6 +54,11 @@ EXPANSION_RARITY_STATS = {
         "rarity_distribution": [101, 80, 63, 15],
         "mythic_rate": 1 / 8.0,
     },
+
+    "AKR": {
+        "rarity_distribution": [108 , 80, 90, 31],
+        "mythic_rate": 1 / 8.0,
+    },
 }
 
 CARDS_PER_RARITY = [5, 2, 1, 1]

@@ -8,30 +8,44 @@ class mtg_set:
         expansion,
         preexisting=None,
         vault_progress=0,
+        gems=0,
         wildcards=None,
+        wildcard_misses=None,
         pack_wildcard_bonuses=None,
     ):
         self.rarity_distribution = expansion["rarity_distribution"]
         self.mythic_rate = expansion["mythic_rate"]
+
+        self.vault_progress = vault_progress
+        self.gems = gems
 
         if preexisting == None:
             # rarity C,U,R,M to a list of counts in range [0,4]
             self.preexisting = list(
                 map(lambda x: [0 for _ in range(x)], expansion["rarity_distribution"])
             )
-
-        self.vault_progress = vault_progress
+        else:
+            self.preexisting = preexisting
 
         if wildcards == None:
             self.wildcards = [0, 0, 0, 0]
+        else:
+            self.wildcards = wildcards
 
         if pack_wildcard_bonuses == None:  # U, R, M
             self.pack_wildcard_bonuses = [0, 0, 0]
+        else:
+            self.pack_wildcard_bonuses = pack_wildcard_bonuses
 
-        self.gems = 0
+    
+
+        if wildcard_misses == None:
+            self.wildcard_misses = [0, 0, 0, 0]
+        else:
+            self.wildcard_misses = wildcard_misses
+
         self.packs_purchased = 0
         self.packs_opened = 0
-        self.wildcard_misses = [0, 0, 0, 0]
         self.pity_limits = [5, 5, 15, 30]
         self.wildcard_rates = [1 / 3, 1 / 5, 1 / 30, 1 / 30]
 
